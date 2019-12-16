@@ -3,7 +3,7 @@ import {Subject} from "../../models/subject";
 import {SubjectService} from "../../services/subject.service";
 import {Student} from "../../models/student";
 import {StudentService} from "../../services/student.service";
-import {ToastController} from "@ionic/angular";
+import {AlertController, ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-enroll-students',
@@ -17,7 +17,7 @@ export class EnrollStudentsPage implements OnInit {
   studentSelectedRadioGroup: any;
   subjectSelectedRadioGroup: any;
 
-  constructor(private subjectService: SubjectService, private studentService: StudentService, private toastCtrl: ToastController) { }
+  constructor(private subjectService: SubjectService, private studentService: StudentService, private toastCtrl: ToastController, private alertCtrl: AlertController) { }
 
   async ngOnInit() {
     this.updateInfo();
@@ -60,5 +60,28 @@ export class EnrollStudentsPage implements OnInit {
       duration: 3000
     });
     await toast.present();
+  }
+
+  async presentAlertConfirm() {
+    await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Are you sure you want to enroll this student?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.enrollStudent();
+          }
+        }
+      ]
+    }).then(alert =>{
+      alert.present();
+    });
   }
 }

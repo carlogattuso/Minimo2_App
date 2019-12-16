@@ -22,7 +22,7 @@
         <h1>{{student.name}}</h1>
         <h3>{{'Address: '+student.address}}</h3>
       </ion-label>
-      <ion-icon (click)="deleteStudent(student._id)" slot="start" icon="close"></ion-icon>
+      <ion-icon (click)="this.studentId = student._id; this.presentAlertConfirm()" slot="start" icon="close"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

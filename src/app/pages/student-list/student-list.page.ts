@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {StudentService} from "../../services/student.service";
 import {Student} from "../../models/student";
-import {ToastController} from "@ionic/angular";
+import {AlertController, ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-student-list',
@@ -12,7 +12,9 @@ import {ToastController} from "@ionic/angular";
 export class StudentListPage implements OnInit {
 
   students: Student[];
-  constructor(private service: StudentService, private toastCtrl: ToastController) { }
+  studentId: string;
+
+  constructor(private service: StudentService, private toastCtrl: ToastController, private alertCtrl: AlertController) { }
 
   async ngOnInit() {
     this.updateInfo();
@@ -28,8 +30,8 @@ export class StudentListPage implements OnInit {
     });
   }
 
-  async deleteStudent (studentId){
-    await this.service.deleteStudent(studentId).subscribe(res => [this.launchToast('Student deleted successfully'),this.updateInfo()]);
+  async deleteStudent (){
+    await this.service.deleteStudent(this.studentId).subscribe(res => [this.launchToast('Student deleted successfully'),this.updateInfo()]);
   }
 
   async launchToast(message) {
@@ -38,5 +40,28 @@ export class StudentListPage implements OnInit {
       duration: 3000
     });
     await toast.present();
+  }
+
+  async presentAlertConfirm() {
+    await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Are you sure you want to delete this student?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.deleteStudent();
+          }
+        }
+      ]
+    }).then(alert =>{
+      alert.present();
+    });
   }
 }
