@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Enroll Students
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h6>Select one student and one subject to enroll him into that subject</h6>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <h1>Students</h1>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-radio-group allow-empty-selection="false" name=“student-radio-group” (ionChange)="studentRadioGroupChange($event)">
+        <ion-list role="list">
+          <ion-item class="ion-text-center" *ngFor="let student of students" class="no-pad list-item" role="listitem">
+            <ion-label>
+              <h2>{{student.name}}</h2>
+              <h5>{{'Address: '+student.address}}</h5>
+            </ion-label>
+            <ion-radio slot="end" value="{{student._id}}"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </ion-radio-group>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <h1>Subjects</h1>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-radio-group allow-empty-selection="false" name=“subject-radio-group” (ionChange)="subjectRadioGroupChange($event)">
+        <ion-list role="list">
+          <ion-item class="ion-text-center" *ngFor="let subject of subjects" class="no-pad list-item" role="listitem">
+            <ion-label>
+              <h2>{{subject.name}}</h2>
+              <h5>{{'Students: '+subject.students.length}}</h5>
+            </ion-label>
+            <ion-radio slot="end" value="{{subject._id}}"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </ion-radio-group>
+    </ion-card-content>
+  </ion-card>
+  <ion-button color="primary" shape="block" fill="solid" [disabled]="(!this.subjectSelectedRadioGroup || !this.studentSelectedRadioGroup)" (click)="enrollStudent()">ENROLL</ion-button>
+</ion-content>

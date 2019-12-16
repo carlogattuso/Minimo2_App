@@ -1,0 +1,25 @@
+ion-list {
+  max-height: 150px;
+  overflow: hidden;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+ion-button {
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h6 {
+  margin: 5%;
+  text-align: center;
+}
