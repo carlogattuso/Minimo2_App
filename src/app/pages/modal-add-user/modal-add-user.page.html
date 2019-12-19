@@ -36,12 +36,12 @@
                         <ion-label>Value:</ion-label>
                         <ion-input name="value" type="text" formControlName="value" placeholder="930898393" required></ion-input>
                       </ion-item>
-                      <ion-button (click)="removeInputFieldPhones(i)" slot="end" icon="close">Remove</ion-button>
+                      <ion-button color="medium" (click)="removeInputFieldPhones(i)" slot="end" icon="close">Remove</ion-button>
                   </ion-item-group>
                 </section>
               </div>
             </ion-card>
-            <ion-button color="primary" (click)="addNewInputFieldPhones()">Add phone</ion-button>
+            <ion-button color="medium" (click)="addNewInputFieldPhones()">Add phone</ion-button>
             <ion-card>
               <div class="phones" formArrayName="studies">
                 <section [formGroupName]="i" *ngFor="let study of studentForm.controls.studies.controls; let i = index">
@@ -51,16 +51,16 @@
                       <ion-label>Name:</ion-label>
                       <ion-input name="name" type="text" formControlName="name" placeholder="Telecom" required></ion-input>
                     </ion-item>
-                    <ion-button (click)="removeInputFieldStudies(i)" slot="right" icon="close">Remove</ion-button>
+                    <ion-button color="medium" (click)="removeInputFieldStudies(i)" slot="right" icon="close">Remove</ion-button>
                   </ion-item-group>
                 </section>
               </div>
             </ion-card>
-            <ion-button color="primary" (click)="addNewInputFieldStudies()">Add study</ion-button>
+            <ion-button color="medium" (click)="addNewInputFieldStudies()">Add study</ion-button>
           </ion-list>
         </ion-col>
       </ion-row>
-      <ion-button class="addButton" color="primary" type="submit" [disabled]="!studentForm.valid">Create</ion-button>
+      <ion-button class="addButton" color="medium" type="submit" [disabled]="!studentForm.valid">Create</ion-button>
     </ion-grid>
   </form>
 </ion-content>
