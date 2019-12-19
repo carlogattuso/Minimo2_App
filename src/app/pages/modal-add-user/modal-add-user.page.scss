@@ -1,0 +1,27 @@
+ion-title {
+  font-weight: bold;
+}
+ion-label {
+  margin-right: 5%;
+}
+ion-input {
+  margin-right: 5%;
+}
+
+.addButton {
+  margin-left: 25%;
+  width: 50%;
+}
+
+.closeButton{
+  margin-right: 5%;
+}
+
+.phones {
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

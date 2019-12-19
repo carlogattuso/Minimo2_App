@@ -21,11 +21,11 @@ export class StudentService {
     return this.http.delete(this.url+'/'+studentId);
   }
 
-  /*getStudentsByStudies(studies): Observable<Student[]>{
-    return this.http.get<Student[]>(this.url.urlStudent+'/studies/'+studies);
+  addStudent(student:any) {
+    return this.http.post(this.url,student);
   }
 
-  addSubject(subject:Subject) {
-    return this.http.post(this.url.urlSubject,subject);
+  /*getStudentsByStudies(studies): Observable<Student[]>{
+    return this.http.get<Student[]>(this.url.urlStudent+'/studies/'+studies);
   }*/
 }

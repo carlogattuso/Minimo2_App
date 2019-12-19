@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import {StudentService} from "../../services/student.service";
 import {Student} from "../../models/student";
-import {AlertController, ToastController} from "@ionic/angular";
+import {AlertController, ModalController, ToastController} from "@ionic/angular";
+import {ModalAddUserPage} from "../modal-add-user/modal-add-user.page";
 
 @Component({
   selector: 'app-student-list',
@@ -14,7 +15,8 @@ export class StudentListPage implements OnInit {
   students: Student[];
   studentId: string;
 
-  constructor(private service: StudentService, private toastCtrl: ToastController, private alertCtrl: AlertController) { }
+  constructor(private service: StudentService, private toastCtrl: ToastController, private alertCtrl: AlertController,
+              private modalCtrl: ModalController) { }
 
   async ngOnInit() {
     this.updateInfo();
@@ -40,6 +42,13 @@ export class StudentListPage implements OnInit {
       duration: 3000
     });
     await toast.present();
+  }
+
+  async openModal(){
+    let modal = await this.modalCtrl.create({
+      component: ModalAddUserPage
+    });
+    await modal.present();
   }
 
   async presentAlertConfirm() {

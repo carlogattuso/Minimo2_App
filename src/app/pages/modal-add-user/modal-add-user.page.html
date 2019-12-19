@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create new user</ion-title>
+    <ion-button (click)="close()" color="light" slot="end">Close</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="studentForm" (ngSubmit)="addStudent(studentForm.value)">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-lg="11" size-xs="12">
+          <ion-list>
+            <ion-card>
+              <ion-item lines="none" color="medium">
+                <ion-label color="dark">Name</ion-label>
+                <ion-input name="name" type="text" formControlName="name" placeholder="Name" required></ion-input>
+              </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-item lines="none" color="medium">
+                <ion-label color="dark">Address</ion-label>
+                <ion-input name="address" type="text" formControlName="address" placeholder="Somewhere St." required></ion-input>
+              </ion-item>
+            </ion-card>
+            <ion-card>
+              <div class="phones" formArrayName="phones">
+                <section [formGroupName]="i" *ngFor="let phone of studentForm.controls.phones.controls; let i = index">
+                  <ion-item-group>
+                    <ion-item-divider color="light">Phone #{{ i + 1 }}</ion-item-divider>
+                      <ion-item lines="none">
+                          <ion-label>Key:</ion-label>
+                          <ion-input name="key" type="text" formControlName="key" placeholder="Home" required></ion-input>
+                      </ion-item>
+                      <ion-item lines="none">
+                        <ion-label>Value:</ion-label>
+                        <ion-input name="value" type="text" formControlName="value" placeholder="930898393" required></ion-input>
+                      </ion-item>
+                      <ion-button (click)="removeInputFieldPhones(i)" slot="end" icon="close">Remove</ion-button>
+                  </ion-item-group>
+                </section>
+              </div>
+            </ion-card>
+            <ion-button color="primary" (click)="addNewInputFieldPhones()">Add phone</ion-button>
+            <ion-card>
+              <div class="phones" formArrayName="studies">
+                <section [formGroupName]="i" *ngFor="let study of studentForm.controls.studies.controls; let i = index">
+                  <ion-item-group>
+                    <ion-item-divider color="light">Study #{{ i + 1 }}</ion-item-divider>
+                    <ion-item lines="none">
+                      <ion-label>Name:</ion-label>
+                      <ion-input name="name" type="text" formControlName="name" placeholder="Telecom" required></ion-input>
+                    </ion-item>
+                    <ion-button (click)="removeInputFieldStudies(i)" slot="right" icon="close">Remove</ion-button>
+                  </ion-item-group>
+                </section>
+              </div>
+            </ion-card>
+            <ion-button color="primary" (click)="addNewInputFieldStudies()">Add study</ion-button>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-button class="addButton" color="primary" type="submit" [disabled]="!studentForm.valid">Create</ion-button>
+    </ion-grid>
+  </form>
+</ion-content>
