@@ -38,12 +38,8 @@ export class SubjectService {
     return this.http.delete(this.url+'/student/'+subjectId+'/'+studentId);
   }
 
-  /*getStudentsByStudies(studies): Observable<Student[]>{
-    return this.http.get<Student[]>(this.url.urlStudent+'/studies/'+studies);
+  addSubject(subject:any) {
+    return this.http.post(this.url,subject);
   }
-
-  addSubject(subject:Subject) {
-    return this.http.post(this.url.urlSubject,subject);
-  }*/
 }
 
