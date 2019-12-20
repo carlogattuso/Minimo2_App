@@ -1,0 +1,13 @@
+.title {
+  text-align: center;
+  margin-top: 7%;
+  margin-left: 5%;
+}
+.phones {
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

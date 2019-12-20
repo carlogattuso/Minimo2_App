@@ -1,9 +1,63 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>student-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Student Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content *ngIf="student">
+  <ion-toolbar class="title">
+    <ion-title class="ion-align-self-center" size="large">{{student.name}}</ion-title>
+  </ion-toolbar>
+  <ion-card>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label>{{'Address: '}}</ion-label>
+        <ion-label>{{student.address}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <h1>Phones</h1>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="phones">
+        <section *ngFor="let phone of student.phones; let i = index">
+          <ion-item-group>
+            <ion-item-divider color="light">Phone#{{ i + 1 }}</ion-item-divider>
+            <ion-item lines="none">
+              <ion-label>{{'Key: '+phone.key}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>{{'Value: '+phone.value}}</ion-label>
+            </ion-item>
+          </ion-item-group>
+        </section>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <h1>Studies</h1>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="phones">
+        <section *ngFor="let study of student.studies; let i = index">
+          <ion-item-group>
+            <ion-item-divider color="light">Study#{{ i + 1 }}</ion-item-divider>
+            <ion-item lines="none">
+              <ion-label>{{'Name: '+study.name}}</ion-label>
+            </ion-item>
+          </ion-item-group>
+        </section>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

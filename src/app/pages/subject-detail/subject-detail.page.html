@@ -1,9 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>subject-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Subject Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content *ngIf="subject">
+  <ion-toolbar class="title">
+    <ion-title size="large">{{subject.name}}</ion-title>
+  </ion-toolbar>
+  <h6 class="ion-text-center">Click one student to view details or click cross to take it from this subject</h6>
+  <ion-list *ngIf="students" role="list">
+    <ion-item class="ion-text-center" *ngFor="let student of students" class="no-pad list-item" role="listitem">
+      <ion-label (click)="goToStudent(student._id)">
+        <h1>{{student.name}}</h1>
+        <h3>{{'Address: '+student.address}}</h3>
+      </ion-label>
+      <ion-icon (click)="this.studentId = student._id; this.presentAlertConfirm()" slot="start" icon="close"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>
+

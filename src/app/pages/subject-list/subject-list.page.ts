@@ -3,6 +3,7 @@ import {SubjectService} from '../../services/subject.service';
 import {Subject} from "../../models/subject";
 import {Observable} from "rxjs";
 import {AlertController, ToastController} from "@ionic/angular";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-subject-list',
@@ -14,7 +15,8 @@ export class SubjectListPage implements OnInit {
   subjects: Subject[];
   subjectId: string;
 
-  constructor(private service: SubjectService, private toastCtrl: ToastController, private alertCtrl: AlertController) { }
+  constructor(private service: SubjectService, private toastCtrl: ToastController, private alertCtrl: AlertController,
+              private router: Router) { }
 
   async ngOnInit() {
     this.updateInfo();
@@ -70,5 +72,9 @@ export class SubjectListPage implements OnInit {
     }).then(alert =>{
       alert.present();
     });
+  }
+
+  async goToSubject(id: any){
+    this.router.navigateByUrl('/subject-detail/'+id);
   }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {StudentService} from "../../services/student.service";
+import {Student} from "../../models/student";
 
 @Component({
   selector: 'app-student-detail',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentDetailPage implements OnInit {
 
-  constructor() { }
+  userId: string;
+  student: Student;
 
-  ngOnInit() {
+  constructor(public activatedRoute : ActivatedRoute, private service: StudentService) {}
+
+  async ngOnInit() {
+    this.userId = this.activatedRoute.snapshot.paramMap.get('studentId');
+    await this.service.getStudentById(this.userId).subscribe(student => this.student=student);
   }
 
+  async ionViewDidEnter(){
+    this.userId = this.activatedRoute.snapshot.paramMap.get('studentId');
+    await this.service.getStudentById(this.userId).subscribe(student => this.student=student);
+  }
 }

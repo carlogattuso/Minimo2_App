@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import {StudentService} from "../../services/student.service";
 import {Student} from "../../models/student";
 import {AlertController, ModalController, ToastController} from "@ionic/angular";
@@ -16,7 +16,7 @@ export class StudentListPage implements OnInit {
   studentId: string;
 
   constructor(private service: StudentService, private toastCtrl: ToastController, private alertCtrl: AlertController,
-              private modalCtrl: ModalController) { }
+              private modalCtrl: ModalController, private router: Router) { }
 
   async ngOnInit() {
     this.updateInfo();
@@ -72,5 +72,9 @@ export class StudentListPage implements OnInit {
     }).then(alert =>{
       alert.present();
     });
+  }
+
+  async goToStudent(id: any){
+    this.router.navigateByUrl('/student-detail/'+id);
   }
 }

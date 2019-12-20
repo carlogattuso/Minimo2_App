@@ -18,7 +18,7 @@
   </ion-fab>
   <ion-list role="list">
     <ion-item class="ion-text-center" *ngFor="let student of students" class="no-pad list-item" role="listitem">
-      <ion-label [routerLink]="['']">
+      <ion-label (click)="goToStudent(student._id)">
         <h1>{{student.name}}</h1>
         <h3>{{'Address: '+student.address}}</h3>
       </ion-label>
