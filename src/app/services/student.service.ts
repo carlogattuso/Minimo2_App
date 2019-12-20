@@ -29,7 +29,7 @@ export class StudentService {
     return this.http.get<Student>(this.url+'/'+studentId);
   }
 
-  getStudentsByStudies(studies): Observable<Student[]>{
+  getStudentsByStudies(studies:any): Observable<Student[]>{
     return this.http.get<Student[]>(this.url+'/studies/'+studies);
   }
 }
