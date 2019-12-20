@@ -25,6 +25,11 @@ export class AppComponent {
       title: 'Enroll Students',
       url: '/enroll-students',
       icon: 'add-circle'
+    },
+    {
+      title: 'Filter By Studies',
+      url: '/filter-studies',
+      icon: 'search'
     }
   ];
 

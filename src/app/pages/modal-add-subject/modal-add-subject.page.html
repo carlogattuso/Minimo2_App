@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create new subject</ion-title>
+    <ion-button (click)="close()" color="light" slot="end">Close</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="subjectForm" (ngSubmit)="addSubject(subjectForm.value)">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-lg="11" size-xs="12">
+          <ion-list>
+            <ion-card>
+              <ion-item lines="none" color="medium">
+                <ion-label color="dark">Name</ion-label>
+                <ion-input name="name" type="text" formControlName="name" placeholder="Name" required></ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-button class="addButton" color="medium" type="submit" [disabled]="!subjectForm.valid">Create</ion-button>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -16,7 +16,7 @@ export class StudentListPage implements OnInit {
   studentId: string;
 
   constructor(private service: StudentService, private toastCtrl: ToastController, private alertCtrl: AlertController,
-              private modalCtrl: ModalController, private router: Router) { }
+              private modalCtrl: ModalController, private router: Router) {}
 
   async ngOnInit() {
     this.updateInfo();

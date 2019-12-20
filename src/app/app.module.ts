@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {ModalAddUserPageModule} from "./pages/modal-add-user/modal-add-user.module";
+import {ModalAddSubjectPageModule} from "./pages/modal-add-subject/modal-add-subject.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import {ModalAddUserPageModule} from "./pages/modal-add-user/modal-add-user.modu
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ModalAddUserPageModule
+    ModalAddUserPageModule,
+    ModalAddSubjectPageModule
   ],
   providers: [
     StatusBar,

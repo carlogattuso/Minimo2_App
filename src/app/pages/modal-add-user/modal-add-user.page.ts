@@ -79,7 +79,9 @@ export class ModalAddUserPage implements OnInit {
       phones: studentForm.phones,
       studies: studentForm.studies
     };
-    this.service.addStudent(student).subscribe(student => this.launchToast('Student created successfully'));
+    this.service.addStudent(student).subscribe(
+        res => this.launchToast('Student added successfully'),
+        error => this.launchToast('Duplicated student'));
   }
 
   async launchToast(message) {

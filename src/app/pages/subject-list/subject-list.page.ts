@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {SubjectService} from '../../services/subject.service';
 import {Subject} from "../../models/subject";
 import {Observable} from "rxjs";
-import {AlertController, ToastController} from "@ionic/angular";
+import {AlertController, ModalController, ToastController} from "@ionic/angular";
 import {Router} from "@angular/router";
+import {ModalAddUserPage} from "../modal-add-user/modal-add-user.page";
+import {ModalAddSubjectPage} from "../modal-add-subject/modal-add-subject.page";
 
 @Component({
   selector: 'app-subject-list',
@@ -16,7 +18,7 @@ export class SubjectListPage implements OnInit {
   subjectId: string;
 
   constructor(private service: SubjectService, private toastCtrl: ToastController, private alertCtrl: AlertController,
-              private router: Router) { }
+              private router: Router, private modalCtrl: ModalController) { }
 
   async ngOnInit() {
     this.updateInfo();
@@ -49,6 +51,13 @@ export class SubjectListPage implements OnInit {
       duration: 3000
     });
     await toast.present();
+  }
+
+  async openModal(){
+    let modal = await this.modalCtrl.create({
+      component: ModalAddSubjectPage
+    });
+    await modal.present();
   }
 
   async presentAlertConfirm() {

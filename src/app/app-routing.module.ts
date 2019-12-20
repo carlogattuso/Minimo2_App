@@ -26,6 +26,14 @@ const routes: Routes = [
   {
     path: 'student-detail/:studentId',
     loadChildren: () => import('./pages/student-detail/student-detail.module').then( m => m.StudentDetailPageModule)
+  },
+  {
+    path: 'modal-add-subject',
+    loadChildren: () => import('./pages/modal-add-subject/modal-add-subject.module').then(m => m.ModalAddSubjectPageModule)
+  },
+  {
+    path: 'filter-studies',
+    loadChildren: () => import('./pages/filter-studies/filter-studies.module').then(m => m.FilterStudiesPageModule)
   }
 ];
 
